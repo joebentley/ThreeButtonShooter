@@ -1,4 +1,4 @@
-extends Polygon2D
+extends Area2D
 
 export var speed = 8
 export var direction = 3  # 1 is left, 2 is up, 3 is right, 4 is down
@@ -8,6 +8,8 @@ func _ready():
 		rotation = PI / 2
 	else:
 		rotation = 0
+		
+	connect("area_entered", self, "_on_area_entered")
 
 func _process(delta):
 	var velocity = Vector2()
@@ -22,3 +24,8 @@ func _process(delta):
 		velocity.y = speed
 	
 	position += velocity
+
+func _on_Bullet_area_entered(area):
+	if area.is_in_group("Enemies"):
+		area.queue_free()
+		$EnemyHitSound.play()

@@ -1,4 +1,4 @@
-extends Sprite
+extends Area2D
 
 export var movement_speed = 3
 var direction = 2 # 1 2 3 4 left up right down
@@ -49,5 +49,9 @@ func _process(delta):
 			for i in range(direction - 1):
 				offset = offset.rotated(PI / 2)
 			
+			# set the bullet position
 			instance.position = position + offset
+			# add it as a child of the main game scene
 			main_game_scene_node.add_child(instance)
+			
+			$FireSound.play()

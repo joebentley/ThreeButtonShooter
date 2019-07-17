@@ -16,6 +16,8 @@ func spawn_enemy():
 	var rand_x
 	var rand_y
 	
+	# TODO: this is broken right now
+	
 	# generate a random position in the rectangle going past the screen boundary
 	# we also flip the direction which will become the movement direction for the enemy
 	if direction == 1:
