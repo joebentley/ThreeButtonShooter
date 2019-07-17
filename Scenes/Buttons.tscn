@@ -47,7 +47,7 @@ margin_left = 149.0
 margin_right = 278.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 4 )
-inputKey = "key_x"
+input_key = "key_x"
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
 margin_left = 282.0
@@ -60,7 +60,7 @@ margin_left = 298.0
 margin_right = 428.0
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 6 )
-inputKey = "key_c"
+input_key = "key_c"
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
 margin_top = 128.0

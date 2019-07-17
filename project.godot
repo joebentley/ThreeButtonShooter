@@ -19,6 +19,10 @@ config/name="ThreeButtonShooter"
 run/main_scene="res://Scenes/Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Utils="*res://Scripts/Utils.gd"
+
 [display]
 
 window/size/width=480

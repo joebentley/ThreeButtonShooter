@@ -1,6 +1,5 @@
 extends Sprite
 
-
 export var movement_speed = 3
 var direction = 2 # 1 2 3 4 left up right down
 
@@ -15,6 +14,10 @@ var main_game_scene_node
 
 func _ready():
 	main_game_scene_node = get_node(main_game_scene)
+	
+	# use parent node if main_game_scene_node couldn't be found
+	if main_game_scene_node == null:
+		main_game_scene_node = get_node("..")
 
 
 func _process(delta):
@@ -30,14 +33,8 @@ func _process(delta):
 			direction += 1
 			if direction > 4: direction = 1
 	
-		if direction == 1:
-			velocity.x = -movement_speed
-		elif direction == 2:
-			velocity.y = -movement_speed
-		elif direction == 3:
-			velocity.x = movement_speed
-		elif direction == 4:
-			velocity.y = movement_speed
+		# calculate the velocity vector to move to
+		velocity = Utils.get_vector_from_direction(direction) * movement_speed
 		
 		position += velocity
 	
