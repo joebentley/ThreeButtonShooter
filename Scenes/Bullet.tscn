@@ -2,6 +2,8 @@
 
 [ext_resource path="res://Scripts/Bullet.gd" type="Script" id=1]
 
+
+
 [node name="Bullet" type="Polygon2D"]
 scale = Vector2( 0.6, 0.8 )
 color = Color( 1, 0.988235, 0.180392, 1 )

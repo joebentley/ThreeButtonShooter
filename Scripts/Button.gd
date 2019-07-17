@@ -1,30 +1,40 @@
-extends TextureButton
+extends TextureRect
+
+signal on_down
+signal on_up
 
 export var input_key = "key_z"
 
+export (Texture) var pressed_texture
+var up_texture
 
-func _on_Button_button_down():
+var pressed = false
+
+func _ready():
+	up_texture = texture
+
+func on_down():
 	$ButtonDownSound.play()
+	texture = pressed_texture
+	pressed = true
+	emit_signal("on_down")
 	
-	# simulate key press on click
-	# hopefully shouldn't cause an infinite loop between this method and _input...
-	Input.action_press(input_key)
-
-func _on_Button_button_up():
+func on_up():
 	$ButtonUpSound.play()
-
-# to press the button in code we simulate a mouse click event
-func simulate_click(pressed):
-	var event = InputEventMouseButton.new()
-	event.set_button_index(1)
-	event.position = rect_global_position
-	event.pressed = pressed
-	Input.parse_input_event(event)
-
+	texture = up_texture
+	pressed = true
+	emit_signal("on_up")
+	
 func _input(event):
 	# when key pressed, simulate a mouse click on the button
 	if event.is_action_pressed(input_key):
-#		print(input_key)
-		call_deferred("simulate_click", true)
+		on_down()
 	elif event.is_action_released(input_key):
-		call_deferred("simulate_click", false)
+		on_up()
+
+func _gui_input(event):
+	if event.get_class() == "InputEventMouseButton" and event.button_index == BUTTON_LEFT:
+		if event.pressed:
+			on_down()
+		else:
+			on_up()
