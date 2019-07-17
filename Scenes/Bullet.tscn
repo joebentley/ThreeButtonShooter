@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scripts/Bullet.gd" type="Script" id=1]
-[ext_resource path="res://Sounds/enemy_hit.wav" type="AudioStream" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 3.10477, 8.13633 )
@@ -17,8 +16,4 @@ polygon = PoolVector2Array( 0, -10, 10, -10, 10, 10, 0, 10, 0, -10 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
-
-[node name="EnemyHitSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 2 )
-volume_db = -19.184
 [connection signal="area_entered" from="." to="." method="_on_Bullet_area_entered"]

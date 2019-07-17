@@ -10,6 +10,7 @@ extents = Vector2( 14.9959, 21.344 )
 
 [node name="Player" type="Area2D"]
 script = ExtResource( 1 )
+movement_speed = 2
 bullet_prefab = ExtResource( 2 )
 
 [node name="PlayerSprite" type="Sprite" parent="."]

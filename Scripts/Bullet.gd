@@ -27,5 +27,6 @@ func _process(delta):
 
 func _on_Bullet_area_entered(area):
 	if area.is_in_group("Enemies"):
+		get_node("/root/Window/EnemyHitSound").play()
 		area.queue_free()
-		$EnemyHitSound.play()
+		queue_free()
