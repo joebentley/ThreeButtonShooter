@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/buttonRelease.ogg-48726485e6e408f13eca7bb1178f26e5.oggstr"
+
+[deps]
+
+source_file="res://Sounds/buttonRelease.ogg"
+dest_files=[ "res://.import/buttonRelease.ogg-48726485e6e408f13eca7bb1178f26e5.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

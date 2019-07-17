@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/ScreenWrap.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
+
+[node name="Game" type="ColorRect"]
+margin_left = 30.0
+margin_top = 30.0
+margin_right = 450.0
+margin_bottom = 580.0
+color = Color( 0.301961, 0.121569, 0.301961, 1 )
+
+[node name="ClippingRectangle" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_clip_content = true
+
+[node name="ScreenWrap" type="Control" parent="ClippingRectangle"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+prefab = ExtResource( 2 )
+initialPosition = Vector2( 150, 200 )

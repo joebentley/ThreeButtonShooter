@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/Bullet.gd" type="Script" id=1]
+
+[node name="Bullet" type="Polygon2D"]
+scale = Vector2( 0.6, 0.8 )
+color = Color( 1, 0.988235, 0.180392, 1 )
+offset = Vector2( -5, -10 )
+polygon = PoolVector2Array( 0, 0, 10, 0, 10, 20, 0, 20, 0, 0 )
+script = ExtResource( 1 )
