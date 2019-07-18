@@ -20,7 +20,7 @@ texture = ExtResource( 3 )
 
 [node name="FireSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
-volume_db = -27.262
+volume_db = -15.65
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

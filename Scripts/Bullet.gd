@@ -3,6 +3,8 @@ extends Area2D
 export var speed = 8
 export var direction = 3  # 1 is left, 2 is up, 3 is right, 4 is down
 
+onready var hit_sound = get_node("/root/Window/EnemyHitSound")
+
 func _ready():
 	if direction == 1 or direction == 3:
 		rotation = PI / 2
@@ -27,6 +29,9 @@ func _process(delta):
 
 func _on_Bullet_area_entered(area):
 	if area.is_in_group("Enemies"):
-		get_node("/root/Window/EnemyHitSound").play()
+		# play enemy hit sound, if it exists
+		if hit_sound:
+			hit_sound.play()
+		# destroy this and the enemy
 		area.queue_free()
 		queue_free()
