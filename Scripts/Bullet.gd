@@ -27,8 +27,10 @@ func _process(delta):
 	
 	position += velocity
 	
-#	var screen_size = get_node("..").get_size()
-#	print(screen_size)
+	var screen_size = get_node("..").get_size()
+	if position.x < -10 or position.x > screen_size.x + 10 \
+	or position.y < -10 or position.y > screen_size.y + 10:
+		queue_free()
 
 
 func _on_Bullet_area_entered(area):
