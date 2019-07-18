@@ -14,6 +14,7 @@ movement_speed = 2
 bullet_prefab = ExtResource( 2 )
 
 [node name="PlayerSprite" type="Sprite" parent="."]
+position = Vector2( 2.93931, 2.85024 )
 scale = Vector2( 6, 6 )
 z_index = 1
 texture = ExtResource( 3 )
@@ -23,5 +24,6 @@ stream = ExtResource( 4 )
 volume_db = -15.65
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.0890694, 0 )
 shape = SubResource( 1 )
 [connection signal="area_entered" from="." to="." method="_on_Player_area_entered"]

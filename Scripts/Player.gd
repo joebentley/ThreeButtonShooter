@@ -57,5 +57,5 @@ func _process(delta):
 			$FireSound.play()
 
 func _on_Player_area_entered(area):
-	if area.is_in_group("Enemies"):
+	if area.is_in_group("Enemies") and not is_ghost:
 		Globals.player_death()
