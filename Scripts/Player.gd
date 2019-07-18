@@ -19,6 +19,8 @@ func _ready():
 	if main_game_scene_node == null:
 		main_game_scene_node = get_node("..")
 
+# hold the current state of the player's input
+var input_state = {turn = false, stop = false, fire = false}
 
 func _process(delta):
 	var velocity = Vector2()
@@ -27,19 +29,26 @@ func _process(delta):
 	rotation = (PI / 2) * (direction - 2)
 	
 	# pause the character if holding x
-	if not Input.is_action_pressed("key_x"):
+	if not input_state.stop:
 		# rotate character movement direction
-		if Input.is_action_just_pressed("key_z"):
+		if input_state.turn:
+			input_state.turn = false  # only turn once
+			
+			# turn the player
 			direction += 1
 			if direction > 4: direction = 1
 	
-		# calculate the velocity vector to move to
+		# calculate the velocity vector to move along
 		velocity = Utils.get_vector_from_direction(direction) * movement_speed
 		
+		# actually move the player
 		position += velocity
 	
 		# shoot a bullet
-		if Input.is_action_just_pressed("key_c") and not is_ghost:
+		if input_state.fire and not is_ghost:
+			input_state.fire = false  # only fire once
+			
+			# setup bullet prefab and fire it
 			var instance = bullet_prefab.instance()
 			instance.direction = direction
 			
@@ -55,6 +64,17 @@ func _process(delta):
 			main_game_scene_node.add_child(instance)
 			
 			$FireSound.play()
+
+func _input(event):
+	# set new input state from the current event
+	if event.is_action_pressed("key_c"):
+		input_state.fire = true
+	if event.is_action_pressed("key_z"):
+		input_state.turn = true
+	if event.is_action_pressed("key_x"):
+		input_state.stop = true
+	if event.is_action_released("key_x"):
+		input_state.stop = false
 
 func _on_Player_area_entered(area):
 	if area.is_in_group("Enemies") and not is_ghost:
