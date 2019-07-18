@@ -58,4 +58,4 @@ func _process(delta):
 
 func _on_Player_area_entered(area):
 	if area.is_in_group("Enemies"):
-		queue_free()
+		Globals.player_death()
