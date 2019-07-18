@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/MovingEnemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/FasterMovingEnemy.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/enemy_bee.png" type="Texture" id=3]
+
+[node name="Enemy" index="0" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+movement_speed = 4
+points_worth = 3
+
+[node name="EnemySprite" parent="." index="0"]
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( -0.582092, 0 )

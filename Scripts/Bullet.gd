@@ -40,7 +40,7 @@ func _on_Bullet_area_entered(area):
 			hit_sound.play()
 		
 		# increment score
-		Globals.score += 1
+		Globals.score += area.points_worth
 		
 		# destroy this and the enemy
 		area.queue_free()

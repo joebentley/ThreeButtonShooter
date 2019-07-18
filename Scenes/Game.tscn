@@ -1,15 +1,16 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/ScreenWrap.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/EnemySpawner.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/MovingEnemy.tscn" type="PackedScene" id=4]
-[ext_resource path="res://04B_03__.TTF" type="DynamicFontData" id=5]
-[ext_resource path="res://Scripts/Label.gd" type="Script" id=6]
+[ext_resource path="res://Scenes/FasterMovingEnemy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://04B_03__.TTF" type="DynamicFontData" id=6]
+[ext_resource path="res://Scripts/Label.gd" type="Script" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
-font_data = ExtResource( 5 )
+font_data = ExtResource( 6 )
 
 [node name="Game" type="ColorRect"]
 margin_left = 30.0
@@ -30,8 +31,12 @@ script = ExtResource( 1 )
 prefab = ExtResource( 2 )
 initialPosition = Vector2( 150, 200 )
 
-[node name="EnemySpawner" parent="ClippingRectangle" instance=ExtResource( 3 )]
+[node name="MovingEnemySpawner" parent="ClippingRectangle" instance=ExtResource( 3 )]
 enemy_prefab = ExtResource( 4 )
+
+[node name="FasterEnemySpawner" parent="ClippingRectangle" instance=ExtResource( 3 )]
+enemy_prefab = ExtResource( 5 )
+time_between_enemy = 3
 
 [node name="Score" type="Label" parent="."]
 margin_left = 10.0
@@ -40,4 +45,4 @@ margin_right = 50.0
 margin_bottom = 24.0
 custom_fonts/font = SubResource( 1 )
 text = "Score: 0"
-script = ExtResource( 6 )
+script = ExtResource( 7 )

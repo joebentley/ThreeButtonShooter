@@ -4,7 +4,7 @@
 [ext_resource path="res://Sprites/enemy_bubble.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 18.3169, 18.1465 )
+extents = Vector2( 15.2941, 14.8904 )
 
 [node name="Enemy" type="Area2D" groups=[
 "Enemies",
