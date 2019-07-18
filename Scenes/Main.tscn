@@ -18,7 +18,7 @@ margin_right = -30.0
 margin_bottom = 10.0
 
 [node name="Game" parent="." instance=ExtResource( 3 )]
-margin_bottom = 569.0
+margin_bottom = 570.0
 
 [node name="EnemyHitSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )

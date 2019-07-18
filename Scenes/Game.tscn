@@ -15,7 +15,7 @@ font_data = ExtResource( 5 )
 margin_left = 30.0
 margin_top = 30.0
 margin_right = 450.0
-margin_bottom = 580.0
+margin_bottom = 570.0
 color = Color( 0.301961, 0.121569, 0.301961, 1 )
 
 [node name="ClippingRectangle" type="Control" parent="."]
