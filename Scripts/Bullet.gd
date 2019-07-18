@@ -26,12 +26,20 @@ func _process(delta):
 		velocity.y = speed
 	
 	position += velocity
+	
+#	var screen_size = get_node("..").get_size()
+#	print(screen_size)
+
 
 func _on_Bullet_area_entered(area):
 	if area.is_in_group("Enemies"):
 		# play enemy hit sound, if it exists
 		if hit_sound:
 			hit_sound.play()
+		
+		# increment score
+		Globals.score += 1
+		
 		# destroy this and the enemy
 		area.queue_free()
 		queue_free()

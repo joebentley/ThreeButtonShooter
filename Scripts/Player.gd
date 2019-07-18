@@ -55,3 +55,7 @@ func _process(delta):
 			main_game_scene_node.add_child(instance)
 			
 			$FireSound.play()
+
+func _on_Player_area_entered(area):
+	if area.is_in_group("Enemies"):
+		queue_free()
