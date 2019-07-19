@@ -20,7 +20,7 @@ func _ready():
 		main_game_scene_node = get_node("..")
 
 # hold the current state of the player's input
-var input_state = {turn = false, stop = false, fire = false}
+var input_state = {turn = false, bomb = false, fire = false}
 
 func _process(delta):
 	var velocity = Vector2()
@@ -28,42 +28,45 @@ func _process(delta):
 	# set rotation depending on direction
 	rotation = (PI / 2) * (direction - 2)
 	
-	# pause the character if holding x
-	if not input_state.stop:
-		# rotate character movement direction
-		if input_state.turn:
-			input_state.turn = false  # only turn once
-			
-			# turn the player
-			direction += 1
-			if direction > 4: direction = 1
-	
-		# calculate the velocity vector to move along
-		velocity = Utils.get_vector_from_direction(direction) * movement_speed
+	# rotate character movement direction
+	if input_state.turn:
+		input_state.turn = false  # only turn once
 		
-		# actually move the player
-		position += velocity
+		# turn the player
+		direction += 1
+		if direction > 4: direction = 1
+
+	# calculate the velocity vector to move along
+	velocity = Utils.get_vector_from_direction(direction) * movement_speed
 	
-		# shoot a bullet
-		if input_state.fire and not is_ghost:
-			input_state.fire = false  # only fire once
-			
-			# setup bullet prefab and fire it
-			var instance = bullet_prefab.instance()
-			instance.direction = direction
-			
-			# approximate relative location of players turret when pointing left
-			var offset = Vector2(-scale.y * 2, 0)
-			# rotate bullet offset for each player rotation relative to left
-			for i in range(direction - 1):
-				offset = offset.rotated(PI / 2)
-			
-			# set the bullet position
-			instance.position = position + offset
-			# add it as a child of the main game scene
-			main_game_scene_node.add_child(instance)
-			
-			$FireSound.play()
+	# actually move the player
+	position += velocity
+
+	# shoot a bullet
+	if input_state.fire and not is_ghost:
+		input_state.fire = false  # only fire once
+		
+		# setup bullet prefab and fire it
+		var instance = bullet_prefab.instance()
+		instance.direction = direction
+		
+		# approximate relative location of players turret when pointing left
+		var offset = Vector2(-scale.y * 2, 0)
+		# rotate bullet offset for each player rotation relative to left
+		for i in range(direction - 1):
+			offset = offset.rotated(PI / 2)
+		
+		# set the bullet position
+		instance.position = position + offset
+		# add it as a child of the main game scene
+		main_game_scene_node.add_child(instance)
+		
+		$FireSound.play()
+	
+	# fire a bomb
+	if input_state.bomb and not is_ghost:
+		input_state.bomb = false
+		Globals.use_bomb()
 
 func _input(event):
 	# set new input state from the current event
@@ -72,9 +75,7 @@ func _input(event):
 	if event.is_action_pressed("key_z"):
 		input_state.turn = true
 	if event.is_action_pressed("key_x"):
-		input_state.stop = true
-	if event.is_action_released("key_x"):
-		input_state.stop = false
+		input_state.bomb = true
 
 func _on_Player_area_entered(area):
 	if area.is_in_group("Enemies") and not is_ghost:

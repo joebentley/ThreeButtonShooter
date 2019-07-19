@@ -26,5 +26,9 @@ func _new_game():
 
 # set number of bombs and emit signal to update on-screen bomb count	
 func set_bombs(value):
-	bombs = value
-	emit_signal("bombs_changed")
+	if bombs > 0:
+		bombs = value
+		emit_signal("bombs_changed")
+
+func use_bomb():
+	set_bombs(bombs - 1)
