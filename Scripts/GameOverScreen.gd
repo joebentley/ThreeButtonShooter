@@ -83,7 +83,6 @@ func _do_input_action_at_current_cursor_position():
 	if high_score_cursor_index < 3:
 		# get the text node
 		var node = get_node("HighScoreInput/Initial" + str(high_score_cursor_index + 1))
-		
 		assert node != null
 		
 		# increment letter for node
@@ -99,6 +98,7 @@ func _do_input_action_at_current_cursor_position():
 		# gather initials from the labels
 		for i in range(3):
 			var node = get_node("HighScoreInput/Initial" + str(i + 1))
+			assert node != null
 			string += node.text
 		
 		_save_high_score(string)
@@ -121,5 +121,6 @@ func _input(event):
 			$HighScoreInput/Arrow.position += Vector2(20, 0)
 		elif event.is_action_pressed("key_x"):
 			_do_input_action_at_current_cursor_position()
+
 	elif event.is_action_pressed("key_c"):
 		emit_signal("new_game")
