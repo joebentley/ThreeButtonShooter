@@ -1,6 +1,7 @@
 extends Node
 
 signal bombs_changed
+signal screen_flash
 
 var score = 0
 var bombs = 3
@@ -32,3 +33,6 @@ func set_bombs(value):
 
 func use_bomb():
 	set_bombs(bombs - 1)
+	
+	# trigger screen flash
+	emit_signal("screen_flash")

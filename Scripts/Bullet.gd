@@ -27,6 +27,7 @@ func _process(delta):
 	
 	position += velocity
 	
+	# free when off screen
 	var screen_size = get_node("..").get_size()
 	if position.x < -10 or position.x > screen_size.x + 10 \
 	or position.y < -10 or position.y > screen_size.y + 10:

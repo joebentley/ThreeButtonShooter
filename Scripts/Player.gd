@@ -66,7 +66,17 @@ func _process(delta):
 	# fire a bomb
 	if input_state.bomb and not is_ghost:
 		input_state.bomb = false
+		
+		# kill all enemies
+		for enemy in get_tree().get_nodes_in_group("Enemies"):
+			enemy.queue_free()
+			
+			# increment score
+			Globals.score += enemy.points_worth
+		
+		# decrement bomb count and trigger screen flash
 		Globals.use_bomb()
+
 
 func _input(event):
 	# set new input state from the current event
