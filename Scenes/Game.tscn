@@ -33,10 +33,16 @@ initialPosition = Vector2( 150, 200 )
 
 [node name="MovingEnemySpawner" parent="ClippingRectangle" instance=ExtResource( 3 )]
 enemy_prefab = ExtResource( 4 )
+time_between_enemy = 3
+num_enemies_between_level = 5
 
 [node name="FasterEnemySpawner" parent="ClippingRectangle" instance=ExtResource( 3 )]
 enemy_prefab = ExtResource( 5 )
-time_between_enemy = 3
+time_between_enemy = 4
+num_enemies_between_level = 4
+time_harder_every_level = 0.5
+enabled = false
+time_until_enabled = 30
 
 [node name="Score" type="Label" parent="."]
 margin_left = 10.0

@@ -1,11 +1,24 @@
 extends Control
 
 export (PackedScene) var enemy_prefab
-export var time_between_enemy = 1
+
+# inital time between enemies
+export var time_between_enemy = 2
+# after this many enemies, make the time between spawns shorter
+export var num_enemies_between_level = 100 
+# make spawn time shorter by this number of seconds every num_enemies_between_level enemies
+export var time_harder_every_level = 0.2
+# shortest time between enemy spawn, can't go below this
+export var minimum_time_between_enemy = 1
+
 # padding around the spawn area
 export var padding = 20
 # size of spawn area
 export var extent = 100
+# whether or not spawner is initially enabled
+export var enabled = true
+# time to wait to enable the spawner
+export var time_until_enabled = 0
 
 # spawn a new enemy in a random place outside the viewport
 func spawn_enemy():
@@ -16,7 +29,7 @@ func spawn_enemy():
 	var rand_x
 	var rand_y
 	
-	# TODO: this is broken right now
+	# TODO: I think this is broken right now
 	
 	# generate a random position in the rectangle going past the screen boundary
 	# we also flip the direction which will become the movement direction for the enemy
@@ -44,11 +57,28 @@ func spawn_enemy():
 
 
 var time_elapsed_since_last_enemy = 0
+var enemies_spawned_this_level = 0
 
 func _process(delta):
-	time_elapsed_since_last_enemy += delta
-	
-	# spawn enemy after enough time passed
-	if time_elapsed_since_last_enemy > time_between_enemy:
-		time_elapsed_since_last_enemy = 0
-		spawn_enemy()
+	if enabled:
+		# if we have spawned enough enemies, shorten time between enemy spawn
+		if enemies_spawned_this_level > num_enemies_between_level:
+			enemies_spawned_this_level = 0
+			time_between_enemy -= time_harder_every_level
+			
+			# never go below the minimum time
+			if time_between_enemy < minimum_time_between_enemy:
+				time_between_enemy = minimum_time_between_enemy
+		
+		time_elapsed_since_last_enemy += delta
+		
+		# spawn enemy after enough time passed
+		if time_elapsed_since_last_enemy > time_between_enemy:
+			time_elapsed_since_last_enemy = 0
+			spawn_enemy()
+			enemies_spawned_this_level += 1
+	else:
+		# enable spawner after time_until_enable passed
+		time_until_enabled -= delta
+		if time_until_enabled < 0:
+			enabled = true
