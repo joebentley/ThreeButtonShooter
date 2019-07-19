@@ -1,6 +1,9 @@
 extends Node
 
+signal bombs_changed
+
 var score = 0
+var bombs = 3
 
 var game_over_screen = preload('res://Scenes/GameOverScreen.tscn')
 var game = preload('res://Scenes/Game.tscn')
@@ -20,3 +23,8 @@ func _new_game():
 	
 	get_node('/root/Window/GameOverScreen').queue_free()
 	get_node('/root/Window').add_child(instance)
+
+# set number of bombs and emit signal to update on-screen bomb count	
+func set_bombs(value):
+	bombs = value
+	emit_signal("bombs_changed")
