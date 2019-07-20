@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/StartScreen.gd" type="Script" id=1]
+[ext_resource path="res://04B_03__.TTF" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 26
+font_data = ExtResource( 2 )
+
+[node name="StartScreen" type="ColorRect"]
+margin_left = 30.0
+margin_top = 30.0
+margin_right = 450.0
+margin_bottom = 570.0
+color = Color( 0.301961, 0.121569, 0.301961, 1 )
+script = ExtResource( 1 )
+
+[node name="Welcome" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -72.5535
+margin_top = 60.0
+margin_right = 61.4465
+margin_bottom = 91.0
+custom_fonts/font = SubResource( 1 )
+text = "Welcome!"
+align = 1
+
+[node name="HighScoresTitle" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -81.3347
+margin_top = 133.386
+margin_right = 76.6653
+margin_bottom = 160.386
+custom_fonts/font = SubResource( 2 )
+text = "High scores"
+align = 1
+
+[node name="HighScoresNames" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -97.0
+margin_top = 187.0
+margin_right = -57.0
+margin_bottom = 370.0
+custom_fonts/font = SubResource( 2 )
+
+[node name="HighScores" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -47.0
+margin_top = 187.0
+margin_right = 100.0
+margin_bottom = 370.0
+custom_fonts/font = SubResource( 2 )
+align = 2
+
+[node name="RestartMessage" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -113.323
+margin_top = 394.941
+margin_right = 115.677
+margin_bottom = 421.941
+custom_fonts/font = SubResource( 2 )
+text = "press c to start"
+align = 1

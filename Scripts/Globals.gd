@@ -1,5 +1,7 @@
 extends Node
 
+const high_score_file = "user://highscores.txt"
+
 signal bombs_changed
 signal screen_flash
 
@@ -16,14 +18,10 @@ func player_death():
 	get_node('/root/Window/Game').queue_free()
 	get_node('/root/Window').add_child(instance)
 
-# restart the game, setting score to zero
-func _new_game():
+
+func new_game():
 	score = 0
-	
-	var instance = game.instance()
-	
-	get_node('/root/Window/GameOverScreen').queue_free()
-	get_node('/root/Window').add_child(instance)
+	bombs = 3
 
 # set number of bombs and emit signal to update on-screen bomb count	
 func set_bombs(value):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/GameOverScreen.gd" type="Script" id=1]
 [ext_resource path="res://04B_03__.TTF" type="DynamicFontData" id=2]
@@ -9,6 +9,10 @@ size = 32
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
+size = 28
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
 size = 24
 font_data = ExtResource( 2 )
 
@@ -50,17 +54,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -90.0
-margin_top = 100.0
-margin_right = 90.0
-margin_bottom = 157.0
-rect_pivot_offset = Vector2( 430, 340 )
+margin_left = -148.261
+margin_top = 133.392
+margin_right = 160.739
+margin_bottom = 200.392
 custom_fonts/font = SubResource( 2 )
-text = "press c to restart"
+text = "press c to return to title screen"
 align = 1
 autowrap = true
 
 [node name="HighScoreInput" type="Control" parent="."]
+editor/display_folded = true
 visible = false
 margin_right = 40.0
 margin_bottom = 40.0
@@ -75,7 +79,7 @@ margin_top = 260.0
 margin_right = 180.0
 margin_bottom = 284.0
 rect_pivot_offset = Vector2( 430, 340 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "A"
 align = 1
 autowrap = true
@@ -90,7 +94,7 @@ margin_top = 260.0
 margin_right = 200.0
 margin_bottom = 284.0
 rect_pivot_offset = Vector2( 430, 340 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "A"
 align = 1
 autowrap = true
@@ -105,7 +109,7 @@ margin_top = 260.0
 margin_right = 220.0
 margin_bottom = 284.0
 rect_pivot_offset = Vector2( 430, 340 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "A"
 align = 1
 autowrap = true
@@ -120,7 +124,7 @@ margin_top = 260.0
 margin_right = 240.0
 margin_bottom = 284.0
 rect_pivot_offset = Vector2( 430, 340 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "o"
 align = 1
 autowrap = true

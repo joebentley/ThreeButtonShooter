@@ -1,8 +1,8 @@
 extends ColorRect
 
-signal new_game
+const start_screen = preload("res://Scenes/StartScreen.tscn")
 
-const high_score_file = "user://highscores.txt"
+onready var high_score_file = Globals.high_score_file
 
 var scores = []
 
@@ -23,6 +23,8 @@ func _ready():
 	var high_score = false
 	scores = []
 	
+	# TODO: it is redundant to keep track of i (num of scores read)
+	# here, because we only ever save 5 max
 	while not file.eof_reached() and i < 5:
 		var line = file.get_line()
 		
@@ -121,6 +123,7 @@ func _input(event):
 			$HighScoreInput/Arrow.position += Vector2(20, 0)
 		elif event.is_action_pressed("key_x"):
 			_do_input_action_at_current_cursor_position()
-
 	elif event.is_action_pressed("key_c"):
-		emit_signal("new_game")
+		# switch to the start screen
+		get_node('..').add_child(start_screen.instance())
+		queue_free()
