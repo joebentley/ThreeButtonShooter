@@ -1,0 +1,25 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float columns = 300f;
+uniform float rows = 450f;
+
+void fragment() {
+	float rounded_x = round(SCREEN_UV.x * columns) / columns;
+	float rounded_y = round(SCREEN_UV.y * rows) / rows;
+	vec2 rounded_uv = vec2(rounded_x, rounded_y);
+	
+//	int row = int(round(SCREEN_UV.y * rows));
+//
+//	if (row % 8 == 0)
+//		COLOR.rgb = textureLod(SCREEN_TEXTURE, rounded_uv, 0.0).rgb * 0.6;
+//	else
+	COLOR.rgb = textureLod(SCREEN_TEXTURE, rounded_uv, 0.0).rgb;
+}"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/columns = 400.0
+shader_param/rows = 600.0

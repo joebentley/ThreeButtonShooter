@@ -53,4 +53,4 @@ func _input(event):
 		
 		# switch to the new scene
 		queue_free()
-		window.add_child(game)
+		window.add_child_below_node(window.get_node("Buttons"), game)

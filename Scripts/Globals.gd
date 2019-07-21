@@ -16,7 +16,8 @@ func player_death():
 	instance.connect("new_game", self, "_new_game")
 
 	get_node('/root/Window/Game').queue_free()
-	get_node('/root/Window').add_child(instance)
+	var window = get_node('/root/Window')
+	window.add_child_below_node(window.get_node('Buttons'), instance)
 
 
 func new_game():

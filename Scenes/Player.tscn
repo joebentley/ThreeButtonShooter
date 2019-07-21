@@ -16,7 +16,6 @@ bullet_prefab = ExtResource( 2 )
 [node name="PlayerSprite" type="Sprite" parent="."]
 position = Vector2( 2.93931, 2.85024 )
 scale = Vector2( 6, 6 )
-z_index = 1
 texture = ExtResource( 3 )
 
 [node name="FireSound" type="AudioStreamPlayer" parent="."]

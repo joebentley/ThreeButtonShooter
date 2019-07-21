@@ -59,7 +59,7 @@ func _process(delta):
 		# set the bullet position
 		instance.position = position + offset
 		# add it as a child of the main game scene
-		main_game_scene_node.add_child(instance)
+		main_game_scene_node.get_node('Bullets').add_child(instance)
 		
 		$FireSound.play()
 	

@@ -125,5 +125,6 @@ func _input(event):
 			_do_input_action_at_current_cursor_position()
 	elif event.is_action_pressed("key_c"):
 		# switch to the start screen
-		get_node('..').add_child(start_screen.instance())
+		var window = get_node('..')
+		window.add_child_below_node(window.get_node('Buttons'), start_screen.instance())
 		queue_free()

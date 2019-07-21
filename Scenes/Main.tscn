@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Buttons.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/StartScreen.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Sounds/enemy_hit.wav" type="AudioStream" id=4]
+[ext_resource path="res://Shaders/pixellate.tres" type="Material" id=5]
 
 [node name="Window" type="ColorRect"]
 margin_right = 480.0
@@ -22,3 +23,13 @@ margin_bottom = 10.0
 [node name="EnemyHitSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 volume_db = -12.369
+
+[node name="Shader" type="ColorRect" parent="."]
+visible = false
+material = ExtResource( 5 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 30.0
+margin_top = 30.0
+margin_right = -30.0
+margin_bottom = -150.0
