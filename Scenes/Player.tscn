@@ -14,7 +14,7 @@ movement_speed = 2
 bullet_prefab = ExtResource( 2 )
 
 [node name="PlayerSprite" type="Sprite" parent="."]
-position = Vector2( 2.93931, 2.85024 )
+position = Vector2( 3.93931, 2.85024 )
 scale = Vector2( 6, 6 )
 texture = ExtResource( 3 )
 

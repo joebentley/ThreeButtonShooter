@@ -22,7 +22,7 @@ func on_down():
 func on_up():
 	$ButtonUpSound.play()
 	texture = up_texture
-	pressed = true
+	pressed = false
 	emit_signal("on_up")
 	
 func _input(event):
